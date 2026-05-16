@@ -1,0 +1,362 @@
+{% liquid
+  assign eyebrow = section.settings.eyebrow | default: 'The Bigger Picture'
+  assign headline = section.settings.headline | default: 'What your team wears tells customers everything — before you say a word.'
+  assign body_text = section.settings.body_text | default: "Branded apparel is one of the most visible, continuous touchpoints a business has. It shapes trust, reinforces team culture, and tells the story customers form about your brand the moment they walk through the door."
+
+  assign stat_1_value = section.settings.stat_1_value | default: '83%'
+  assign stat_1_label = section.settings.stat_1_label | default: 'of customers say staff appearance affects perceived quality'
+  assign stat_2_value = section.settings.stat_2_value | default: '3×'
+  assign stat_2_label = section.settings.stat_2_label | default: 'more brand recall from wearables vs digital advertising'
+
+  assign p1t = section.settings.point_1_title | default: 'Team cohesion'
+  assign p1d = section.settings.point_1_description | default: 'Uniforms signal reliability. Customers trust a unified, recognizable team.'
+  assign p2t = section.settings.point_2_title | default: 'Brand recognition'
+  assign p2d = section.settings.point_2_description | default: 'Consistent apparel keeps your brand visible everywhere your staff and community go.'
+  assign p3t = section.settings.point_3_title | default: 'Customer trust'
+  assign p3d = section.settings.point_3_description | default: 'Professional presentation correlates directly with perceived competence and price tolerance.'
+  assign p4t = section.settings.point_4_title | default: 'Culture signaling'
+  assign p4d = section.settings.point_4_description | default: 'What you wear internally says as much as what you market externally.'
+%}
+
+<div class="yazly-brand-education__inner">
+  <div class="yazly-brand-education__left">
+    <span class="yazly-brand-education__eyebrow reveal">{{ eyebrow }}</span>
+    <h2 class="section-title section-title--light yazly-brand-education__headline reveal reveal-delay-1">
+      {{ headline }}
+    </h2>
+    <p class="yazly-brand-education__body reveal reveal-delay-2">{{ body_text }}</p>
+
+    <div class="yazly-brand-education__stats reveal reveal-delay-3">
+      <div class="yazly-brand-education__stat">
+        <span class="yazly-brand-education__stat-value">{{ stat_1_value }}</span>
+        <span class="yazly-brand-education__stat-label">{{ stat_1_label }}</span>
+      </div>
+      <div class="yazly-brand-education__stat">
+        <span class="yazly-brand-education__stat-value">{{ stat_2_value }}</span>
+        <span class="yazly-brand-education__stat-label">{{ stat_2_label }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="yazly-brand-education__cards reveal reveal-delay-2">
+    <article class="yazly-brand-education__card">
+      <h3 class="yazly-brand-education__card-title">{{ p1t }}</h3>
+      <p class="yazly-brand-education__card-desc">{{ p1d }}</p>
+    </article>
+    <article class="yazly-brand-education__card">
+      <h3 class="yazly-brand-education__card-title">{{ p2t }}</h3>
+      <p class="yazly-brand-education__card-desc">{{ p2d }}</p>
+    </article>
+    <article class="yazly-brand-education__card">
+      <h3 class="yazly-brand-education__card-title">{{ p3t }}</h3>
+      <p class="yazly-brand-education__card-desc">{{ p3d }}</p>
+    </article>
+    <article class="yazly-brand-education__card">
+      <h3 class="yazly-brand-education__card-title">{{ p4t }}</h3>
+      <p class="yazly-brand-education__card-desc">{{ p4d }}</p>
+    </article>
+  </div>
+</div>
+
+{% stylesheet %}
+  .yazly-brand-education-section {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-charcoal);
+    padding: var(--section-padding) 0;
+  }
+
+  .yazly-brand-education-section::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    right: 80px;
+    font-family: var(--font-display);
+    font-size: 600px;
+    font-weight: 600;
+    line-height: 1;
+    color: rgb(255 255 255 / 0.02);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .yazly-brand-education__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .yazly-brand-education__eyebrow {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-beige) 60%, transparent);
+    margin-bottom: 16px;
+  }
+
+  .yazly-brand-education__headline {
+    margin: 0 0 24px;
+  }
+
+  .yazly-brand-education__body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: rgb(248 248 248 / 0.45);
+    line-height: 1.85;
+    margin: 0 0 44px;
+  }
+
+  .yazly-brand-education__stats {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .yazly-brand-education__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .yazly-brand-education__stat-value {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-white);
+    line-height: 1.1;
+  }
+
+  .yazly-brand-education__stat-label {
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgb(255 255 255 / 0.35);
+    max-width: 120px;
+  }
+
+  .yazly-brand-education__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .yazly-brand-education__card {
+    background: rgb(255 255 255 / 0.03);
+    border: 1px solid rgb(255 255 255 / 0.06);
+    border-radius: 4px;
+    padding: 24px;
+    margin: 0;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .yazly-brand-education__card:hover {
+    background: rgb(255 255 255 / 0.06);
+    border-color: rgb(255 255 255 / 0.12);
+  }
+
+  .yazly-brand-education__card-title {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(248 248 248 / 0.8);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .yazly-brand-education__card-desc {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 300;
+    color: rgb(255 255 255 / 0.32);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .yazly-brand-education-section::before {
+      font-size: 220px;
+      top: -20px;
+      right: 16px;
+      opacity: 0.35;
+    }
+
+    .yazly-brand-education__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .yazly-brand-education__stats {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .yazly-brand-education__stat-label {
+      max-width: 100%;
+    }
+
+    .yazly-brand-education__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+<script>
+  (function () {
+    const root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+    const reveals = root.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach((el) => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        });
+      },
+      { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+    );
+    reveals.forEach((el) => io.observe(el));
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Brand education",
+  "tag": "section",
+  "class": "yazly-brand-education-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Bigger Picture"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "What your team wears tells customers everything — before you say a word."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Branded apparel is one of the most visible, continuous touchpoints a business has. It shapes trust, reinforces team culture, and tells the story customers form about your brand the moment they walk through the door."
+    },
+    {
+      "type": "header",
+      "content": "Stats"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 value",
+      "default": "83%"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "of customers say staff appearance affects perceived quality"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 value",
+      "default": "3×"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "more brand recall from wearables vs digital advertising"
+    },
+    {
+      "type": "header",
+      "content": "Point card 1"
+    },
+    {
+      "type": "text",
+      "id": "point_1_title",
+      "label": "Title",
+      "default": "Team cohesion"
+    },
+    {
+      "type": "textarea",
+      "id": "point_1_description",
+      "label": "Description",
+      "default": "Uniforms signal reliability. Customers trust a unified, recognizable team."
+    },
+    {
+      "type": "header",
+      "content": "Point card 2"
+    },
+    {
+      "type": "text",
+      "id": "point_2_title",
+      "label": "Title",
+      "default": "Brand recognition"
+    },
+    {
+      "type": "textarea",
+      "id": "point_2_description",
+      "label": "Description",
+      "default": "Consistent apparel keeps your brand visible everywhere your staff and community go."
+    },
+    {
+      "type": "header",
+      "content": "Point card 3"
+    },
+    {
+      "type": "text",
+      "id": "point_3_title",
+      "label": "Title",
+      "default": "Customer trust"
+    },
+    {
+      "type": "textarea",
+      "id": "point_3_description",
+      "label": "Description",
+      "default": "Professional presentation correlates directly with perceived competence and price tolerance."
+    },
+    {
+      "type": "header",
+      "content": "Point card 4"
+    },
+    {
+      "type": "text",
+      "id": "point_4_title",
+      "label": "Title",
+      "default": "Culture signaling"
+    },
+    {
+      "type": "textarea",
+      "id": "point_4_description",
+      "label": "Description",
+      "default": "What you wear internally says as much as what you market externally."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand education"
+    }
+  ]
+}
+{% endschema %}
