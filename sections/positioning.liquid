@@ -1,0 +1,282 @@
+{% liquid
+  assign eyebrow    = section.settings.eyebrow    | default: 'Why Yazly'
+  assign headline   = section.settings.headline   | default: 'Your apparel should work as hard as your brand does.'
+  assign body_text  = section.settings.body_text  | default: 'We're not a print shop. We're a branding partner who happens to produce exceptional apparel. Every recommendation we make is grounded in how your team looks, how customers perceive you, and how your brand shows up in the world.'
+  assign link_label = section.settings.link_label | default: 'See our work'
+  assign link_url   = section.settings.link_url   | default: '/pages/portfolio'
+
+  assign c1_number = section.settings.card_1_number      | default: '01'
+  assign c1_title  = section.settings.card_1_title        | default: 'Presentation-first thinking'
+  assign c1_desc   = section.settings.card_1_description  | default: 'We design for how your team looks in the field — not just what fits in a production run.'
+
+  assign c2_number = section.settings.card_2_number      | default: '02'
+  assign c2_title  = section.settings.card_2_title        | default: 'Consistent quality, every run'
+  assign c2_desc   = section.settings.card_2_description  | default: 'In-house production means we control every step. No outsourcing, no surprises, no excuses.'
+
+  assign c3_number = section.settings.card_3_number      | default: '03'
+  assign c3_title  = section.settings.card_3_title        | default: 'A partner, not a printer'
+  assign c3_desc   = section.settings.card_3_description  | default: 'We help you think through what works for your brand — not just fill an order form.'
+%}
+
+<section class="yazly-positioning">
+  <div class="yazly-positioning__inner">
+
+    <!-- Left column -->
+    <div class="yazly-positioning__left">
+
+      <span class="eyebrow reveal">{{ eyebrow }}</span>
+
+      <h2 class="section-title yazly-positioning__headline reveal reveal-delay-1">
+        {{ headline }}
+      </h2>
+
+      <p class="yazly-positioning__body reveal reveal-delay-2">{{ body_text }}</p>
+
+      {%- if link_label != blank and link_url != blank -%}
+        <a href="{{ link_url }}" class="yazly-positioning__link reveal reveal-delay-3">
+          <span>{{ link_label }}</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {%- endif -%}
+
+    </div>
+
+    <!-- Right column -->
+    <div class="yazly-positioning__right">
+
+      <div class="yazly-positioning__card reveal reveal-delay-1">
+        <span class="yazly-positioning__card-number">{{ c1_number }}</span>
+        <p class="yazly-positioning__card-title">{{ c1_title }}</p>
+        <p class="yazly-positioning__card-desc">{{ c1_desc }}</p>
+      </div>
+
+      <div class="yazly-positioning__card reveal reveal-delay-2">
+        <span class="yazly-positioning__card-number">{{ c2_number }}</span>
+        <p class="yazly-positioning__card-title">{{ c2_title }}</p>
+        <p class="yazly-positioning__card-desc">{{ c2_desc }}</p>
+      </div>
+
+      <div class="yazly-positioning__card reveal reveal-delay-3">
+        <span class="yazly-positioning__card-number">{{ c3_number }}</span>
+        <p class="yazly-positioning__card-title">{{ c3_title }}</p>
+        <p class="yazly-positioning__card-desc">{{ c3_desc }}</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .yazly-positioning {
+    --card-hover-border: #bbbbbb;
+    background-color: var(--color-white);
+    padding: var(--section-padding) 0;
+  }
+
+  .yazly-positioning__inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* ── Left column ── */
+  .yazly-positioning__headline {
+    margin: 0 0 28px;
+  }
+
+  .yazly-positioning__body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin: 0 0 36px;
+  }
+
+  .yazly-positioning__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-black);
+    padding-bottom: 2px;
+    transition: gap 0.2s ease;
+  }
+
+  .yazly-positioning__link:hover {
+    gap: 10px;
+  }
+
+  /* ── Right column — cards ── */
+  .yazly-positioning__right {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .yazly-positioning__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 28px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .yazly-positioning__card:hover {
+    border-color: var(--card-hover-border);
+    transform: translateX(4px);
+  }
+
+  .yazly-positioning__card-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-beige);
+    margin-bottom: 10px;
+  }
+
+  .yazly-positioning__card-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-black);
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+
+  .yazly-positioning__card-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .yazly-positioning__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Positioning",
+  "tag": "section",
+  "class": "yazly-positioning-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why Yazly"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Your apparel should work as hard as your brand does."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "We're not a print shop. We're a branding partner who happens to produce exceptional apparel. Every recommendation we make is grounded in how your team looks, how customers perceive you, and how your brand shows up in the world."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "See our work"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "text",
+      "id": "card_1_number",
+      "label": "Number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "Presentation-first thinking"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_description",
+      "label": "Description",
+      "default": "We design for how your team looks in the field — not just what fits in a production run."
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "text",
+      "id": "card_2_number",
+      "label": "Number",
+      "default": "02"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "Consistent quality, every run"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_description",
+      "label": "Description",
+      "default": "In-house production means we control every step. No outsourcing, no surprises, no excuses."
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "text",
+      "id": "card_3_number",
+      "label": "Number",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "A partner, not a printer"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_description",
+      "label": "Description",
+      "default": "We help you think through what works for your brand — not just fill an order form."
+    }
+  ]
+}
+{% endschema %}
