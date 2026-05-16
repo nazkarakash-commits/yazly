@@ -1,0 +1,153 @@
+{% liquid
+  assign stat_1_value = section.settings.stat_1_value | default: '500+'
+  assign stat_1_label = section.settings.stat_1_label | default: 'Brands Outfitted'
+  assign stat_2_value = section.settings.stat_2_value | default: 'DTF & Embroidery'
+  assign stat_2_label = section.settings.stat_2_label | default: 'In-House Production'
+  assign stat_3_value = section.settings.stat_3_value | default: 'Local. Personal.'
+  assign stat_3_label = section.settings.stat_3_label | default: 'Not a Fulfillment Center'
+  assign stat_4_value = section.settings.stat_4_value | default: '48hr'
+  assign stat_4_label = section.settings.stat_4_label | default: 'Quote Turnaround'
+%}
+
+<div class="yazly-trust-bar">
+  <div class="yazly-trust-bar__inner">
+
+    <div class="yazly-trust-bar__stat">
+      <span class="yazly-trust-bar__value">{{ stat_1_value }}</span>
+      <span class="yazly-trust-bar__label">{{ stat_1_label }}</span>
+    </div>
+
+    <div class="yazly-trust-bar__stat">
+      <span class="yazly-trust-bar__value">{{ stat_2_value }}</span>
+      <span class="yazly-trust-bar__label">{{ stat_2_label }}</span>
+    </div>
+
+    <div class="yazly-trust-bar__stat">
+      <span class="yazly-trust-bar__value">{{ stat_3_value }}</span>
+      <span class="yazly-trust-bar__label">{{ stat_3_label }}</span>
+    </div>
+
+    <div class="yazly-trust-bar__stat yazly-trust-bar__stat--last">
+      <span class="yazly-trust-bar__value">{{ stat_4_value }}</span>
+      <span class="yazly-trust-bar__label">{{ stat_4_label }}</span>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .yazly-trust-bar {
+    background-color: var(--color-bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .yazly-trust-bar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .yazly-trust-bar__stat {
+    padding: 28px 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .yazly-trust-bar__stat--last {
+    border-right: none;
+  }
+
+  .yazly-trust-bar__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-white);
+    letter-spacing: -0.01em;
+  }
+
+  .yazly-trust-bar__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.02em;
+    margin-top: 4px;
+  }
+
+  /* ── Mobile: 2×2 grid ── */
+  @media (max-width: 768px) {
+    .yazly-trust-bar__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Remove all vertical borders on mobile */
+    .yazly-trust-bar__stat {
+      border-right: none;
+    }
+
+    /* Add horizontal border between the two rows */
+    .yazly-trust-bar__stat:nth-child(-n + 2) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "tag": "section",
+  "class": "yazly-trust-bar-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 — Value",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 — Label",
+      "default": "Brands Outfitted"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 — Value",
+      "default": "DTF & Embroidery"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 — Label",
+      "default": "In-House Production"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 — Value",
+      "default": "Local. Personal."
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 — Label",
+      "default": "Not a Fulfillment Center"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_value",
+      "label": "Stat 4 — Value",
+      "default": "48hr"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_label",
+      "label": "Stat 4 — Label",
+      "default": "Quote Turnaround"
+    }
+  ]
+}
+{% endschema %}
