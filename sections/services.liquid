@@ -1,0 +1,389 @@
+{% liquid
+  assign eyebrow  = section.settings.eyebrow  | default: 'What We Do'
+  assign headline = section.settings.headline | default: 'Built for how real businesses brand themselves.'
+  assign subtext  = section.settings.subtext  | default: 'From a café's front-of-house team to a creator's merch drop — we build apparel that carries your brand forward.'
+
+  assign s1_name  = section.settings.service_1_name        | default: 'Custom Printing'
+  assign s1_desc  = section.settings.service_1_description | default: 'Vibrant, wash-durable DTF and screen printing for any garment. High-resolution results that hold up wear after wear.'
+  assign s1_tags  = section.settings.service_1_tags        | default: 'DTF,Screen Print,Full Colour' | split: ','
+
+  assign s2_name  = section.settings.service_2_name        | default: 'Embroidery'
+  assign s2_desc  = section.settings.service_2_description | default: 'Premium texture that signals quality before a word is spoken. Structured logos, polos, hats, and workwear done right.'
+  assign s2_tags  = section.settings.service_2_tags        | default: 'Polos,Headwear,Workwear' | split: ','
+
+  assign s3_name  = section.settings.service_3_name        | default: 'Uniforms & Teams'
+  assign s3_desc  = section.settings.service_3_description | default: 'Cohesive looks across your entire team. Consistent presentation builds trust at every customer touchpoint.'
+  assign s3_tags  = section.settings.service_3_tags        | default: 'Staff Uniforms,Sports Teams,Workwear' | split: ','
+
+  assign s4_name  = section.settings.service_4_name        | default: 'Merch & Brand Apparel'
+  assign s4_desc  = section.settings.service_4_description | default: 'Creator drops, event merchandise, branded collections. Apparel your audience actually wants to wear.'
+  assign s4_tags  = section.settings.service_4_tags        | default: 'Creator Merch,Events,Nonprofits' | split: ','
+%}
+
+<section class="yazly-services">
+  <div class="yazly-services__inner">
+
+    <!-- Section header -->
+    <div class="yazly-services__header reveal">
+      <div class="yazly-services__header-left">
+        <span class="eyebrow">{{ eyebrow }}</span>
+        <h2 class="section-title yazly-services__headline">{{ headline }}</h2>
+      </div>
+      <p class="yazly-services__subtext">{{ subtext }}</p>
+    </div>
+
+    <!-- Services grid -->
+    <div class="yazly-services__grid">
+
+      <!-- Card 1: Custom Printing -->
+      <div class="yazly-services__card reveal">
+        <div class="yazly-services__icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="2" width="12" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4 8H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 8h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="4" y="12" width="12" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="7" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="yazly-services__name">{{ s1_name }}</p>
+        <p class="yazly-services__desc">{{ s1_desc }}</p>
+        <div class="yazly-services__pills">
+          {%- for tag in s1_tags -%}
+            <span class="yazly-services__pill">{{ tag | strip }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Card 2: Embroidery -->
+      <div class="yazly-services__card reveal reveal-delay-1">
+        <div class="yazly-services__icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="5.5" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="5.5" cy="14.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="7.6" y1="7.2" x2="18" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M18 3L7.6 12.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="yazly-services__name">{{ s2_name }}</p>
+        <p class="yazly-services__desc">{{ s2_desc }}</p>
+        <div class="yazly-services__pills">
+          {%- for tag in s2_tags -%}
+            <span class="yazly-services__pill">{{ tag | strip }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Card 3: Uniforms & Teams -->
+      <div class="yazly-services__card reveal reveal-delay-2">
+        <div class="yazly-services__icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="7.5" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M1 18v-1a6.5 6.5 0 0 1 13 0v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="15.5" cy="5.5" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M19 18v-1a4.5 4.5 0 0 0-3.5-4.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="yazly-services__name">{{ s3_name }}</p>
+        <p class="yazly-services__desc">{{ s3_desc }}</p>
+        <div class="yazly-services__pills">
+          {%- for tag in s3_tags -%}
+            <span class="yazly-services__pill">{{ tag | strip }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Card 4: Merch & Brand Apparel -->
+      <div class="yazly-services__card reveal reveal-delay-3">
+        <div class="yazly-services__icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 1.5L1.5 6v8L10 18.5l8.5-4.5V6L10 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="1.5" y1="6" x2="10" y2="10.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="18.5" y1="6" x2="10" y2="10.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="10.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="6" y1="3.5" x2="14" y2="8" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <p class="yazly-services__name">{{ s4_name }}</p>
+        <p class="yazly-services__desc">{{ s4_desc }}</p>
+        <div class="yazly-services__pills">
+          {%- for tag in s4_tags -%}
+            <span class="yazly-services__pill">{{ tag | strip }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .yazly-services {
+    --service-card-bg: #ffffff;
+    --service-card-hover-bg: #fafafa;
+    --service-tag-bg: #f0efec;
+    background-color: var(--color-bg-light);
+    padding: var(--section-padding) 0;
+  }
+
+  .yazly-services__inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  /* ── Section header ── */
+  .yazly-services__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 40px;
+  }
+
+  .yazly-services__headline {
+    margin: 0;
+    max-width: 460px;
+  }
+
+  .yazly-services__subtext {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-muted);
+    max-width: 280px;
+    text-align: right;
+    line-height: 1.7;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  /* ── Services grid ── */
+  .yazly-services__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  /* ── Card ── */
+  .yazly-services__card {
+    position: relative;
+    overflow: hidden;
+    background: var(--service-card-bg);
+    padding: 36px 28px;
+    transition: background-color 0.2s ease;
+  }
+
+  .yazly-services__card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .yazly-services__card:hover {
+    background-color: var(--service-card-hover-bg);
+  }
+
+  .yazly-services__card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* ── Icon wrapper ── */
+  .yazly-services__icon-wrap {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--color-charcoal);
+  }
+
+  /* ── Card text ── */
+  .yazly-services__name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-black);
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+  }
+
+  .yazly-services__desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin: 0 0 20px;
+  }
+
+  /* ── Tag pills ── */
+  .yazly-services__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .yazly-services__pill {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    background: var(--service-tag-bg);
+    border-radius: 2px;
+    padding: 4px 8px;
+  }
+
+  /* ── Tablet: 2 columns ── */
+  @media (max-width: 1024px) {
+    .yazly-services__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ── Mobile: 1 column, stack header ── */
+  @media (max-width: 768px) {
+    .yazly-services__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .yazly-services__subtext {
+      text-align: left;
+      max-width: 100%;
+    }
+
+    .yazly-services__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Services",
+  "tag": "section",
+  "class": "yazly-services-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What We Do"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Built for how real businesses brand themselves."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Header subtext",
+      "default": "From a café's front-of-house team to a creator's merch drop — we build apparel that carries your brand forward."
+    },
+    {
+      "type": "header",
+      "content": "Service 1"
+    },
+    {
+      "type": "text",
+      "id": "service_1_name",
+      "label": "Name",
+      "default": "Custom Printing"
+    },
+    {
+      "type": "textarea",
+      "id": "service_1_description",
+      "label": "Description",
+      "default": "Vibrant, wash-durable DTF and screen printing for any garment. High-resolution results that hold up wear after wear."
+    },
+    {
+      "type": "text",
+      "id": "service_1_tags",
+      "label": "Tags (comma-separated)",
+      "default": "DTF,Screen Print,Full Colour"
+    },
+    {
+      "type": "header",
+      "content": "Service 2"
+    },
+    {
+      "type": "text",
+      "id": "service_2_name",
+      "label": "Name",
+      "default": "Embroidery"
+    },
+    {
+      "type": "textarea",
+      "id": "service_2_description",
+      "label": "Description",
+      "default": "Premium texture that signals quality before a word is spoken. Structured logos, polos, hats, and workwear done right."
+    },
+    {
+      "type": "text",
+      "id": "service_2_tags",
+      "label": "Tags (comma-separated)",
+      "default": "Polos,Headwear,Workwear"
+    },
+    {
+      "type": "header",
+      "content": "Service 3"
+    },
+    {
+      "type": "text",
+      "id": "service_3_name",
+      "label": "Name",
+      "default": "Uniforms & Teams"
+    },
+    {
+      "type": "textarea",
+      "id": "service_3_description",
+      "label": "Description",
+      "default": "Cohesive looks across your entire team. Consistent presentation builds trust at every customer touchpoint."
+    },
+    {
+      "type": "text",
+      "id": "service_3_tags",
+      "label": "Tags (comma-separated)",
+      "default": "Staff Uniforms,Sports Teams,Workwear"
+    },
+    {
+      "type": "header",
+      "content": "Service 4"
+    },
+    {
+      "type": "text",
+      "id": "service_4_name",
+      "label": "Name",
+      "default": "Merch & Brand Apparel"
+    },
+    {
+      "type": "textarea",
+      "id": "service_4_description",
+      "label": "Description",
+      "default": "Creator drops, event merchandise, branded collections. Apparel your audience actually wants to wear."
+    },
+    {
+      "type": "text",
+      "id": "service_4_tags",
+      "label": "Tags (comma-separated)",
+      "default": "Creator Merch,Events,Nonprofits"
+    }
+  ]
+}
+{% endschema %}
